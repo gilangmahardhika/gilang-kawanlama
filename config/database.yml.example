@@ -1,0 +1,26 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("KL_DB_HOST") { "127.0.0.1" } %>
+  port: <%= ENV.fetch("KL_DB_PORT") { 5432 } %>
+  password: <%= ENV.fetch("KL_DB_PASSWORD")%>
+  username: <%= ENV.fetch("KL_DB_USERNAME") { "postgres" } %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("KL_DB_DEV") { "kawanlama_development" } %>
+  
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("KL_DV_TEST") { "kawanlama_test" } %>
+
+production:
+  <<: *default
+  database: gilang_kawanlama_production
+  username: gilang_kawanlama
+  password: <%= ENV["GILANG_KAWANLAMA_DATABASE_PASSWORD"] %>
