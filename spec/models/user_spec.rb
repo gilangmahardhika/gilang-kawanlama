@@ -14,9 +14,42 @@ RSpec.describe User, type: :model do
 
   context "CRUD" do
     let(:user) { FactoryBot.build(:user) }
+    let(:second_user) { FactoryBot.create(:user, name: "Test", email: "test@example.com", password: "password") }
 
     it "creates a new user" do
       expect(user.save).to be_truthy
+    end
+
+    it "can update name" do
+      second_user.name = "Gilang"
+      second_user.save
+      expect(second_user.name).to eq("Gilang")
+    end
+
+    it "can update email" do
+      second_user.email = "gilangmahardhika@gmail.com"
+      second_user.save
+      expect(second_user.email).to eq("gilangmahardhika@gmail.com")
+    end
+
+    it "can update password" do
+      second_user.password = "new_password"
+      second_user.save
+      expect(second_user.password).to eq("new_password")
+    end
+
+    it "can update role" do
+      second_user.role = "User"
+      second_user.save
+      expect(second_user.role).to eq("User")
+    end
+
+    it "can delete user" do
+      user = FactoryBot.create(:user, email: "delete@me.com")
+      expect(User.find_by(email: "delete@me.com")).not_to eq(nil)
+
+      user.delete
+      expect(User.find_by(email: "delete@me.com")).to eq(nil)
     end
 
   end
