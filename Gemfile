@@ -30,3 +30,4 @@ end
 
 
 gem "tailwindcss-rails", "~> 2.2"
+gem "carrierwave", "3.0.5"
