@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post "sign_in", to: "authentications#sign_in", as: :sign_in
   delete "sign_out", to: "authentications#sign_out", as: :sign_out
 
+  resources :products
 end
