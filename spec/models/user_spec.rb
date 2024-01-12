@@ -65,4 +65,17 @@ RSpec.describe User, type: :model do
       expect(user.authenticate("password123")).to be_falsy
     end
   end
+
+  context "authorization" do
+    let(:admin) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.create(:user, role: "User") }
+
+    it "has admin role" do
+      expect(admin.is_admin?).to be_truthy
+    end
+
+    it "has user role" do
+      expect(user.is_user?).to be_truthy
+    end
+  end
 end

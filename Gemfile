@@ -19,6 +19,7 @@ group :development, :test do
   gem "faker", "3.2.2"
   gem "factory_bot_rails", "6.4.2"
   gem "shoulda-matchers", "6.0.0"
+  gem "capybara", "3.39.2"
 end
 
 group :development do

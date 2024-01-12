@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   post "sign_in", to: "authentications#sign_in", as: :sign_in
-  delete "sign_out", to: "authentications#sign_out", as: :sign_out
+  post "sign_out", to: "authentications#sign_out", as: :sign_out
 
   resources :products
 end
