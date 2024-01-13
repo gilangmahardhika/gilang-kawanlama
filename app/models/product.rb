@@ -7,4 +7,6 @@ class Product < ApplicationRecord
   mount_uploader :first_photo, ProductUploader
   mount_uploader :second_photo, ProductUploader
   mount_uploader :third_photo, ProductUploader
+
+  scope :order_by_created, -> (q) { order(created_at: q) }
 end

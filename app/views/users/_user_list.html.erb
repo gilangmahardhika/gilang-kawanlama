@@ -1,0 +1,13 @@
+<%- users.each do |u| %>
+    <tr>
+        <td class="text-center py-3 px-4 justify-center">
+            <%= u.name %>
+        </td>
+        <td class="w-1/3 text-left py-3 px-4">
+            <%= u.email %>
+        </td>
+        <td class="w-1/3 text-left py-3 px-4">
+            <%= u.role %>
+        </td>
+    </tr>
+<% end %>
