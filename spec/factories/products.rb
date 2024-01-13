@@ -6,5 +6,6 @@ FactoryBot.define do
     first_photo {  }
     second_photo {  }
     third_photo {  }
+    description { Faker::Lorem.paragraph(sentence_count: 2, supplemental: true) }
   end
 end

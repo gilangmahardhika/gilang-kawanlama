@@ -1,6 +1,9 @@
 class Product < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: [:name, :sku, :description]
 
-  validates_presence_of :name, :sku, :count
+
+  validates_presence_of :name, :sku, :count, :description
   validates_uniqueness_of :sku
   validates_numericality_of :count
 
