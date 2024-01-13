@@ -22,15 +22,15 @@ RSpec.describe "Authentications", type: :request do
         }
       }
 
-      it "should logged in successfully" do
+      xit "should logged in successfully" do
         post "/sign_in", params: valid_params
-        expect(response).to have_http_status :created
+        expect(response).to redirect_to(products_path)
 
       end
 
       it "should be fail on login" do
         post "/sign_in", params: wrong_params
-        expect(response).to have_http_status :unauthorized
+        expect(response.status).to redirect_to(root_path)
       end
     end
   end

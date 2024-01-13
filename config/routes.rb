@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   delete "sign_out", to: "authentications#sign_out", as: :sign_out
 
   resources :products
+  resources :users
 end
