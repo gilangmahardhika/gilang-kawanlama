@@ -4,13 +4,10 @@ class AuthenticationsController < ApplicationController
     @user = User.find_by(email: permitted_params[:email])
     if @user && @user.authenticate(permitted_params[:password])
       session[:user_id] = @user.id
-      flash[:type] = :notice
-      flash[:message] = "You have signed in successfully"
-
+      flash[:success] = "You have signed in successfully"
       redirect_to products_url, format: :html
     else
-      flash[:message] = "Incorrect username or password"
-      flash[:type] = :error
+      flash[:error] = "Incorrect username or password"
       redirect_to root_url, format: :html
     end
   end
