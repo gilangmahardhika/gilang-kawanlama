@@ -11,13 +11,13 @@
                         <strong>Description</strong>
                         <p><%= @product.description %></p>
                     </div>
-                    <div class="columns-3 px-4 mt-20">
+                    <div class="gap-8 columns-3 px-4 mt-20">
                         <%= image_tag @product.first_photo_url, class: "w-full aspect-square" if @product.first_photo.present? %>
                     </div>
-                    <div class="columns-3 px-4 mt-20">
+                    <div class="gap-8 columns-3 px-4 mt-20">
                         <%= image_tag @product.second_photo_url, class: "w-full aspect-square" if @product.second_photo.present? %>
                     </div>
-                    <div class="columns-3 px-4 mt-20">
+                    <div class="gap-8 columns-3 px-4 mt-20">
                         <%= image_tag @product.third_photo_url, class: "w-full aspect-square" if @product.third_photo.present? %>
                     </div>
                 </div>

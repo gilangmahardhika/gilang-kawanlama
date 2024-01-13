@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   def index
     page = !params[:page].present? ? 1 : params[:page]
     @products = if params[:q].present?
-      PgSearch.multisearch(params[:q]).page(page).per(10)
+      Product.search_product(params[:q]).page(page).per(10)
     else
       Product.order_by_created(:desc).page(page).per(10)
     end
