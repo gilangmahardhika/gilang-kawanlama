@@ -15,14 +15,17 @@
     p.count =  rand(1..100)
     p.remote_first_photo_url = Faker::LoremFlickr.image(size: "150x150")
   end
+  puts "*"
 end
 
 # Seeds Admin User
 User.create do |u|
   User.create(name: "Admin", email: "admin@example.com", password: "password", role: "Admin")
+  puts "*"
 end
 
 # Seeds User
 User.create do |u|
   User.create(name: "User", email: "user@example.com", password: "password", role: "User")
+  puts "*"
 end

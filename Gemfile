@@ -33,5 +33,6 @@ gem "tailwindcss-rails", "~> 2.2"
 gem "carrierwave", "3.0.5"
 gem "heroicon", "1.0.0"
 gem "kaminari", "1.2.2"
-gem 'mini_magick'
+gem "mini_magick", "4.12.0"
 gem "faker", "3.2.2"
+gem "cloudinary", "1.28.0"
