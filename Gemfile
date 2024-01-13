@@ -33,3 +33,4 @@ end
 gem "tailwindcss-rails", "~> 2.2"
 gem "carrierwave", "3.0.5"
 gem "heroicon", "1.0.0"
+gem "kaminari", "1.2.2"
