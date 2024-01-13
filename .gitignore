@@ -37,3 +37,10 @@
 /config/master.key
 
 /config/credentials/test.key
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/docs
+.DS_Store
+.ds_store
+/public/uploads
