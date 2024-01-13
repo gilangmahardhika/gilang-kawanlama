@@ -16,3 +16,13 @@
     p.remote_first_photo_url = Faker::LoremFlickr.image(size: "150x150")
   end
 end
+
+# Seeds Admin User
+User.create do |u|
+  User.create(name: "Admin", email: "admin@example.com", password: "password", role: "Admin")
+end
+
+# Seeds User
+User.create do |u|
+  User.create(name: "User", email: "user@example.com", password: "password", role: "User")
+end
