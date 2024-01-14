@@ -19,6 +19,7 @@ group :development, :test do
   gem "factory_bot_rails", "6.4.2"
   gem "shoulda-matchers", "6.0.0"
   gem "capybara", "3.39.2"
+  gem "database_cleaner", "2.0.2"
 end
 
 group :development do
@@ -37,3 +38,5 @@ gem "mini_magick", "4.12.0"
 gem "faker", "3.2.2"
 gem "cloudinary", "1.28.0"
 gem "pg_search", "2.3.6"
+gem "karafka", "2.2.14"
+gem "karafka-web", "0.7.10"
