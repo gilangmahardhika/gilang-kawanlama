@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   def index
     page = !params[:page].present? ? 1 : params[:page]
     @products = if params[:search].present?
-      ProductSearch.search(
+      ProductSearch.new.search(
         params[:search][:q],
         params[:search][:order],
         params[:search][:sort]
@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      flash[:success] = "Product has been created"
+      flash[:success] = "Product has been updated"
       redirect_to product_url(@product), format: :html
     else
       flash[:error] = @product.errors.full_messages
