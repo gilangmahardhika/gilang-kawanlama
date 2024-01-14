@@ -50,6 +50,12 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    if @product.destroy
+      flash[:notice] = "Product has been deleted"
+    else
+      flash[:error] = "Failed to delete product"
+    end
+    redirect_to product_url, format: :html
   end
 
   private

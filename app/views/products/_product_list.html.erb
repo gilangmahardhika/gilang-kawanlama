@@ -14,6 +14,16 @@
         <td class="text-left py-3 px-4">
             <%= p.count %>
         </td>
+        <%- if current_user.is_admin? %>
+            <td class="text-left py-3 px-4">
+                <%= button_to "Edit", edit_product_path(p), method: :get, 
+                    form_class: "w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center" 
+                %>
+                <%= button_to "Delete", product_path(p), method: :delete, 
+                    form_class: "w-full bg-red-700 text-slate-200 font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center", data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}
+                %>
+            </td>
+        <% end %>
         
     </tr>
 <% end %>
