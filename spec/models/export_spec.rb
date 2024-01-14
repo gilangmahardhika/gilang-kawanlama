@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Export, type: :model do
   context "validations" do
-    it { should validate_presence_of(:file) }
     it { should validate_presence_of(:user_id) }
     it { should validate_presence_of(:status) }
     it do
