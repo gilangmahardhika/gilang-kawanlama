@@ -63,3 +63,6 @@ on separate terminal run `bundle exec karafka server`
 
 ### Live App
 [Click Here](https://gilang-kawanlama-02ecbe03e798.herokuapp.com/)
+
+### TODO
+Export doesn't work on Heroku due to Heroku can't write file, need to move it to storage bucket(in this case I use cloudinary), but export works normally on local machine
