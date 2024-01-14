@@ -43,8 +43,9 @@ class ProductsController < ApplicationController
   def update
     if @product.update(product_params)
       flash[:success] = "Product has been created"
-      redirect_to products_url, format: :html
+      redirect_to product_url(@product), format: :html
     else
+      flash[:error] = @product.errors.full_messages
       render :new
     end
   end
