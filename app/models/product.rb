@@ -12,4 +12,6 @@ class Product < ApplicationRecord
   mount_uploader :third_photo, ProductUploader
 
   scope :order_by_created, -> (q) { order(created_at: q) }
+  scope :ordered_by, -> (key, value) { order("#{key} #{value}") }
+
 end
