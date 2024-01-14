@@ -6,9 +6,7 @@
                     <p class="text-xl pb-3 flex items-center">
                         <i class="fas fa-list mr-3"></i> Products
                     </p>
-                    <%= form_with url: products_path, method: :get do |f| %>
-                        <%= f.search_field :q, value: params[:q], placeholder: "Search" %>
-                    <% end %>
+                    <%= render "search_form"  %>
                 </div>
                 <div class="bg-white overflow-auto">
                     <table class="min-w-full bg-white">

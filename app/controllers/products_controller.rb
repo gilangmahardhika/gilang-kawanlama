@@ -7,8 +7,12 @@ class ProductsController < ApplicationController
 
   def index
     page = !params[:page].present? ? 1 : params[:page]
-    @products = if params[:q].present?
-      Product.search_product(params[:q]).page(page).per(10)
+    @products = if params[:search].present?
+      ProductSearch.search(
+        params[:search][:q],
+        params[:search][:order],
+        params[:search][:sort]
+      ).page(page).per(10)
     else
       Product.order_by_created(:desc).page(page).per(10)
     end

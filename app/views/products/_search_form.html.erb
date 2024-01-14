@@ -1,0 +1,12 @@
+<%= form_for :search, url: products_path, method: :get do |f| %>
+    <%= f.search_field :q, value: (params[:search][:q] rescue nil), placeholder: "Search" %>
+    <%= f.select :order, 
+        options_for_select(order_params, (params[:search][:order] rescue nil)), 
+        {prompt: "Order By"}, 
+        {class: "w-36 px-2 py-2 mb-2"} %>
+    <%= f.select :sort, 
+        options_for_select(sorting_params, (params[:search][:sort] rescue nil)),
+        {prompt: "Sort"}, 
+        {class: "w-32 px-2 py-2 mb-2"} %>
+    <%= f.submit :search, class: "w-36 px-2 py-2 mb-2 bg-indigo-600 text-white" %>
+<% end %>

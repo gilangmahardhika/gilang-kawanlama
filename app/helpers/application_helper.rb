@@ -13,4 +13,12 @@ module ApplicationHelper
       'bg-gray-100 border-gray-400 text-gray-700'
     end
   end
+
+  def sorting_params
+    [["Ascending", "asc"], ["Descending", "desc"]]
+  end
+
+  def order_params
+    [["Name", "name"], ["SKU", "sku"], ["Count", "count"]]
+  end
 end
