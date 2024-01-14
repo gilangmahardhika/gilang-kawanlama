@@ -78,4 +78,8 @@ RSpec.describe User, type: :model do
       expect(user.is_user?).to be_truthy
     end
   end
+
+  context "relations" do
+    it { should have_many(:exports) }
+  end
 end

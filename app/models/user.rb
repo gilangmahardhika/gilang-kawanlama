@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   ROLES = ["Admin", "User"]
 
+  has_many :exports
+
   validates_presence_of :email, :name, :role
   validates_inclusion_of :role, in: ROLES
 
