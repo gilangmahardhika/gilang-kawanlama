@@ -5,7 +5,7 @@ class ExportJob < ApplicationJob
     dispatch_method: :produce_sync
   )
 
-  def perform(*args)
-    # Do something later
+  def perform(export)
+    export.export_data
   end
 end
