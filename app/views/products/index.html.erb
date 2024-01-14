@@ -16,6 +16,9 @@
                                 <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">SKU</th>
                                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
                                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Count</th>
+                                <%- if current_user.is_admin? %>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
+                                <% end %>
                             </tr>
                         </thead>
                         <tbody class="text-gray-700">

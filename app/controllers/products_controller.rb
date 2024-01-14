@@ -27,10 +27,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
+    if @product.save!
       flash[:success] = "Product has been created"
       redirect_to products_url, format: :html
     else
+      flash[:error] = @product.errors.full_messages
       render :new
     end
   end
@@ -42,18 +43,25 @@ class ProductsController < ApplicationController
   def update
     if @product.update(product_params)
       flash[:success] = "Product has been created"
-      redirect_to products_url, format: :html
+      redirect_to product_url(@product), format: :html
     else
+      flash[:error] = @product.errors.full_messages
       render :new
     end
   end
 
   def destroy
+    if @product.destroy
+      flash[:notice] = "Product has been deleted"
+    else
+      flash[:error] = "Failed to delete product"
+    end
+    redirect_to product_url, format: :html
   end
 
   private
     def product_params
-      params.require(:product).permit(:name, :sku, :count, :first_photo, :second_photo, :third_photo)
+      params.require(:product).permit(:name, :sku, :count, :description, :first_photo, :second_photo, :third_photo, :submit)
     end
 
     def find_product
