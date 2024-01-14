@@ -4,6 +4,8 @@ class Export < ApplicationRecord
 
   STATUS = ["InProgress", "Finished"]
 
+  default_scope -> { includes(:user) }
+
   ## Somehow Doens't work on RSpec
   before_validation :set_initial_status, on: :create
 
@@ -23,6 +25,18 @@ class Export < ApplicationRecord
     self.status = "InProgress"
   end
 
+  def file_name
+    "export_#{id}.csv"
+  end
+
+  def file_path
+    Rails.root.join("app/exports/#{file_name}")
+  end
+
+  def finished?
+    status == "Finished"
+  end
+
   ## Hacking delegate
   [:name, :email].each do |item|
     define_method "user_#{item}" do
@@ -31,17 +45,18 @@ class Export < ApplicationRecord
   end
 
   def create_file
-    CSV.open(Rails.root.join("app/exports/export_#{id}.csv"), "w") do |csv|
+    CSV.open(file_path, "w") do |csv|
       csv << ["SKU", "Name", "Count"]
     end
+    ExportJob.perform_later(self)
   end
 
   def export_data
-    source_file = Rails.root.join("app/exports/export_#{id}.csv")
-    CSV.open(source_file, "a") do |csv|
+    CSV.open(file_path, "a") do |csv|
       Product.find_each(batch_size: 1000).each do |p|
         csv << [p.sku, p.name, p.count]
       end
     end
+    self.update(status: "Finished")
   end
 end

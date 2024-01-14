@@ -13,4 +13,9 @@ Rails.application.routes.draw do
 
   resources :products
   resources :users
+  resources :exports, only: [:index, :create] do
+    member do
+      post :download
+    end
+  end
 end

@@ -1,0 +1,20 @@
+<%- exports.each do |export| %>
+    <tr>
+        <td class="w-1/3 text-left py-3 px-4">
+            <%= export.id %>
+        </td>
+        <td class="w-1/3 text-left py-3 px-4">
+            <%= export.user_name %>
+        </td>
+        <td class="w-1/3 text-left py-3 px-4">
+            <%= export.status %>
+        </td>
+        <td class="text-left py-3 px-4">
+            <%- if export.finished? %>
+                <%= button_to "Download", download_export_path(export), method: :post, 
+                    form_class: "w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center", data: { turbo: false }
+                %>
+            <% end %>
+        </td>        
+    </tr>
+<% end %>
