@@ -1,24 +1,65 @@
-# README
+## Kawanlama Assesment Test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Dependencies
+```
+ruby 3.3.0
+kafka
+imagemagick
+postgresql
+docker (optional)
+```
 
-Things you may want to cover:
+### ENV Vars
+```
+config/database.yml
 
-* Ruby version
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("KL_DB_HOST") { "127.0.0.1" } %>
+  port: <%= ENV.fetch("KL_DB_PORT") { 5432 } %>
+  password: <%= ENV.fetch("KL_DB_PASSWORD")%>
+  username: <%= ENV.fetch("KL_DB_USERNAME") { "postgres" } %>
 
-* System dependencies
+development:
+  <<: *default
+  database: <%= ENV.fetch("KL_DB_DEV") { "kawanlama_development" } %>
+  
 
-* Configuration
+test:
+  <<: *default
+  database: <%= ENV.fetch("KL_DB_TEST") { "kawanlama_test" } %>
+```
 
-* Database creation
+```
+karafka.rb
 
-* Database initialization
+config.kafka = { 'bootstrap.servers': ENV.fetch("KAFKA_URL") { '127.0.0.1:9092' } }
+```
 
-* How to run the test suite
+### Setup
+```
+bundle install
+rails db:migrate
+rails db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+if kafka installer on machine just make sure it's running well, if no can use this
+```
+git clone git@github.com:karafka/karafka.git
+cd karafka
+docker-compose up
+```
 
-* Deployment instructions
+### Run Test
+`rspec`
 
-* ...
+### Run The App
+`bin/dev`
+on separate terminal run `bundle exec karafka server`
+
+### Live App
+[Click Here](https://gilang-kawanlama-02ecbe03e798.herokuapp.com/)
