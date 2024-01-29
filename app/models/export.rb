@@ -30,7 +30,7 @@ class Export < ApplicationRecord
   end
 
   def file_path
-    Rails.root.join("app/exports/#{file_name}")
+    Rails.root.join("public/exports/#{file_name}")
   end
 
   def finished?

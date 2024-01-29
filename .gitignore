@@ -45,3 +45,4 @@
 .ds_store
 /public/uploads
 /app/exports/*.csv
+/public/exports/*.csv
