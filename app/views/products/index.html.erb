@@ -27,8 +27,9 @@
                     </table>
                 </div>
             </div>
-        <div class="">
-            <%= paginate @products %>
+        <div class="mt-10">
+            <%= link_to_prev_page @products, t('views.pagination.prev').html_safe, class: "bg-white hover:bg-gray-100 text-gray-800 font-light py-2 px-4 border border-gray-400 rounded shadow mx-1" %>
+            <%= link_to_next_page @products, t('views.pagination.next').html_safe, class: "bg-white hover:bg-gray-100 text-gray-800 font-light py-2 px-4 border border-gray-400 rounded shadow mx-1" %>
         <div>
     </main>
     

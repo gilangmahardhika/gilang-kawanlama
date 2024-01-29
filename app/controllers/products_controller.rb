@@ -12,9 +12,9 @@ class ProductsController < ApplicationController
         params[:search][:q],
         params[:search][:order],
         params[:search][:sort]
-      ).page(page).per(10)
+      ).page(page).per(10).without_count
     else
-      Product.order_by_created(:desc).page(page).per(10)
+      Product.order_by_created(:desc).page(page).per(10).without_count
     end
   end
 
